@@ -1,0 +1,100 @@
+ /* ESTILOS DE LAS INFORMACIONES DE BOWLING */
+aside {
+position: absolute;  border: #f2f2f2 2px solid;
+overflow: hidden; font-family: monospace; 
+font-size: 10px;  margin: 0; 
+text-transform: capitalize;
+text-align: center;
+} 
+
+aside#estilo1 {
+left: 280px; top: 350px; width:250px; height:200px;
+}
+
+aside#estilo2 {
+left: 540px; top: 350px; width:250px; height:200px;
+}
+
+aside#estilo3 {
+left: 800px; top: 350px; width:250px; height:200px;
+}
+
+/* ESTILOS DE LA PUBLICIDAD */
+h3 {
+	position: absolute;  border: #f2f2f2 2px solid;
+	overflow: hidden; font-family: monospace; 
+	text-align:center; font-size: 10px;
+	margin: 0;text-transform: capitalize;
+}
+h3#multimedia{
+	top:    1px;
+   left:   900px;
+}
+
+h3#pub-der1
+{ 
+   left:   1050px;
+   top:    150px;   
+ 
+}
+h3#pub-der2
+{
+   left:   1080px;
+   top:    330px;
+ 
+}
+h3#pub-izq1 { 
+   left:   10px;
+   top:    150px;
+   width:  250px;
+   height: 100px;
+   font-size:12px;
+   background-color: #CDFFEB;
+   text-align:left;
+   padding:10px 0;      
+}
+h3#pub-izq1 a:hover  
+{
+  color: magenta;
+}
+
+h3#pub-izq2
+{ 
+   left:   10px;
+   top:    260px;
+   width:  250px;
+   height: 250px;
+}
+h3#pub-izq3
+{ 
+   left:   10px;
+   top:    520px;
+ 
+}
+ 
+h3#pub-centro1
+{ 
+   left:   270px;
+   top:    410px;
+   width:  350px;
+   height: 350px;
+
+}
+
+
+/* GENERA UNA LINEA HORIZONTAL  */
+hr{
+   margin-right:  1px;
+   margin-left:   1px;
+   top:    185px;
+   height: 1px;
+   color: #0056b2;
+}
+
+a:link{
+	color:green;
+}
+a:hover{
+color:green;
+background:yellow ;
+}
