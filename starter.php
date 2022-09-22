@@ -73,99 +73,11 @@
 	<div class="content-wrapper">
 		<section class="content">
 
-    <h3 align="center">
-                
-                <?php 
-                           
-                  $cod=$_GET["parametro"];
-                  $unmail = explode(".", $cod); 
-                  $piso = $unmail[0]; 
-                  $apar = $unmail[1]; 
-                  $cedula = $unmail[2]; 
-                  $email = $unmail[3]; 
-          
-          
-                   echo "<A href='modificarpropietario.php?cedula=$cedula&email=$email'>Regresar al Menu Anterior</A>";
-                ?>
-          
-            </h3>
-
 
 <!-- DESDE AQUI SE DEBEN PONER LOS PROGRAMAS -->
 
  
 
-<?php 
-
-include ("php/connect.php");
-
-$sql="SELECT * from apartamentos where PISO = $piso and APARTAMENTO = '$apar'  ";
-$result=mysqli_query($mysqli,$sql);
-
-?>
-
-<form action="capturamodtablapropietario.php" method="POST">
-
-<table border="4" align="center" width="500">
-
-<?php foreach ($result as $key => $value)  {?>
-
-<tr>
-  <td>Piso</td> 
-  <td><?php echo $piso?></td>
-</tr>
-
-<tr>
-<td>Apartamento Nº</td> 
-      <td><?php echo $apar?></td>
-</tr>
-
-<tr>
-<td>Nombre</td> 
-      <td><input type="text" name="txnombre" value="<?php echo $value["NOMBRE"]; ?>" required></td>
-</tr>
-
-<tr>
-<td>Apellido</td> 
-      <td><input type="text" name="txapellido" value="<?php echo $value["APELLIDO"]; ?>" required></td>
-</tr>
-
-<tr>
-<td>Email Principal</td>
-      <td><input type="text" name="txcorreoa" value="<?php echo $value["CORREOA"]; ?>" required></td>
-</tr>
-
-<tr>
-<td>Email Secundario</td>
-      <td><input type="text" name="txcorreob" value="<?php echo $value["CORREOB"]; ?>" required></td>
-</tr>
-
-<tr>
-<td>Telefono Hogar</td> 
-      <td><input type="text"  name="txtelefonoca" value="<?php if(is_numeric($value["TELEFONOCA"])) {echo $value["TELEFONOCA"]; } else { echo " NO es numérico"; } ?> " required></td>
-</tr>
-
-<tr>
-<td>Telefono Celula</td> 
-      <td><input type="text"  name="txtelefonoce" value="<?php if(is_numeric($value["TELEFONOCE"])) {echo $value["TELEFONOCE"]; } else { echo " NO es numérico"; } ?> " required></td>
-</tr>
-
-
-<tr>
-  <td colspan="2"><input type="submit" value="Guardar"></td>
-</tr>
-
-<?php } ?>
-
-</table>
-<input type="hidden" name="cedula" value="<?php echo $cedula; ?> "> 
-<input type="hidden" name="email" value="<?php echo $email; ?> "> 
-
-<input type="hidden" name="funcion" value="modificar">;
-<input type="hidden" name="cod" value="<?php echo $cod; ?>">
-
-
-</form>
 
 <!-- HASTA AQUI SE DEBEN PONER LOS PROGRAMAS -->
 
