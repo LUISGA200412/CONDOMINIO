@@ -1,10 +1,12 @@
 <?php
  
     $cedula=$_GET['cedula'];
+    $email=$_GET['email'];
     $mes=$_GET['mes'];
+
  
    
-ECHO $mes;
+//ECHO $mes;
  include ("../php/connect.php");
 
     $sql="UPDATE facturacion set
@@ -20,7 +22,7 @@ ECHO $mes;
                 echo "<center style='color:#e77b16'><h1>El Mes ha sido cerrado</h1>";   
                 echo "<center style='color:#e77b16'>";
 
-                echo "<form id='form1' name='form1' method='post' action='../administrador.php?cedula=$cedula'>";
+                echo "<form id='form1' name='form1' method='post' action='../administrador.php?cedula=$cedula&email=$email'>";
                 
                 echo "<input type='submit' value='Continuar'>";
                 echo "</form>";

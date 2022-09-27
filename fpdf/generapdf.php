@@ -2,8 +2,10 @@
 <?php 
 
 $cedula=$_GET['cedula'];
+$email=$_GET['email'];
 
 
+ 
 /* print_r($_GET);*/
 
 /*error_reporting(0);*/
@@ -46,20 +48,21 @@ if ($mesfacturacion ==0) {
     
 
     echo "<script>alert('NO HAY FACTURACIONES CARGADAS PARA GENERA EL RECIBO,,,,,, FAVOR CARGE AL MENOS UNA FACTURACION.');
-            location.href ='../administrador.php'+'?cedula=$cedula';
+            location.href ='../administrador.php'+'?cedula=$cedula&email=$email';
             </script>";
 }
-else
+else 
 {    
-
+ 
+ 
     $archivoenpdf = "condominio-del-".date("Y").date($mesfacturacion).".pdf";
-    $messalida = "Del Mes ".date($mesfacturacion)." A/o ".date("Y");
+    $messalida = "Del Mes ".date($mesfacturacion).utf8_decode(" Año ").date("Y");
 
 
  
 //Instaciamos la clase para genrear el documento pdf
 
-    echo " cedual ".$_GET['cedula']."".$messalida;
+    //echo " cedula ".$_GET['cedula']."".$messalida;
 $pdf=new FPDF();
  
 $pdf->AddPage();
@@ -102,6 +105,7 @@ $pdf->Cell(25,8,'Aptos',1,0,'C',0);
 $pdf->Cell(25,8,'PH',1,0,'C',0);
 $pdf->Ln(8);
  
+$totalgastos=0;$totalgastosapto=0;$totalgastosph=0;
 
  $query="SELECT * FROM facturacion WHERE CIERREMES = 0 ORDER BY CODIGOFACTURACION";
  $resultado=$mysqli->query($query);
@@ -219,12 +223,12 @@ while($fila=$resultado->fetch_array(MYSQLI_ASSOC))
  
 //Mostramos el documento pdf
 
-
+echo "wlkhglkñkhlkf";
 $path = "../fpdf/RECIBOSDEPAGO/".$archivoenpdf;
 //$path1 = "../administrador.php?cedula=".$cedula;
 
-    echo "<script>alert('GENERACION DEL DOCUMENTO DE CONDOMINIO MENSUAL SE GENERO EXITOSAMENTE.');
-            location.href ='../administrador.php'+'?cedula=$cedula';
+   echo "<script>alert('GENERACION DEL DOCUMENTO DE CONDOMINIO MENSUAL SE GENERO EXITOSAMENTE.');
+            location.href ='../administrador.php'+'?cedula=$cedula&email=$email';
             </script>"; 
 //$pdf->Output($archivoenpdf,"S");
 //
@@ -232,4 +236,4 @@ $pdf->Output($path,"F");
 
 //header('location:'.$path1); 
 }
-?>
+?> 

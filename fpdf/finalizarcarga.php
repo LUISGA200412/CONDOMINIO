@@ -45,21 +45,22 @@
 
   <!-- Header -->
   <header id="header">
+
     <div class="container">
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li>
-                <?php
-                    session_start();
-                    $cedula=$_GET['cedula'];
-                    echo "<A href='../administrador.php?cedula=$cedula'>Regresar al Menu Anterior</A>";
-                  ?>
-          </li>
- 
-        </ul>
-      </nav>
- 
-  </header>
+
+      <h2 align="center"><b>
+            <?php
+               
+              $cedula=$_GET['cedula'];
+              $email=$_GET['email'];
+
+              echo "<A href='../administrador.php?cedula=$cedula&email=$email'>Regresar al Menu Anterior</A>";
+            ?>
+      </b></h2>
+
+    </div>
+    
+  </header>  
 
 <div align="center">
 
@@ -92,10 +93,10 @@ if (isset($mesfacturacion)) {
 
 
 
-
+    $f=utf8_decode(" AÑO ");
     $mes = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
     $mes = $mes[($mesfacturacion * 1) -1 ];
-    $messalida = "DEL MES ".date($mesfacturacion)." DEL A/O ".date("Y");
+    $messalida = "DEL MES ".date($mesfacturacion).$f.date("Y");
 
 echo "<h3 style='color: red'>";
 echo "<b>";
@@ -110,7 +111,7 @@ echo "<br><br>";
             location.href ='../contactanos.html';
             </script>";    */
  
-  echo "<form action='../fpdf/cerrarelmes.php?cedula=$cedula&mes=$mescierre' method='post'>";
+  echo "<form action='../fpdf/cerrarelmes.php?cedula=$cedula&mes=$mescierre&email=$email' method='post'>";
 
   echo  "<input type='submit' value='Cerrar el Mes'>";
  
@@ -121,7 +122,7 @@ echo "<br><br>";
 else
 {
     echo "<script>alert('No Existe Ningun Mes Para Cerrar..... Corrija y carge un mes');
-            location.href ='../administrador.php?cedula=$cedula';
+            location.href ='../administrador.php?cedula=$cedula&email=$email';
              </script>"; 
 }
  
