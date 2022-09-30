@@ -1,4 +1,3 @@
-<?php   include("redessociales.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -56,7 +55,9 @@
             <?php
                
               $cedula=$_GET['cedula'];
-              echo "<A href='administrador.php?cedula=$cedula'>Regresar al Menu Anterior</A>";
+              $email=$_GET['email'];
+
+              echo "<A href='administrador.php?cedula=$cedula&email=$email'>Regresar al Menu Anterior</A>";
             ?>
       </b></h2>
 
@@ -71,7 +72,7 @@
   <div align="center"  > 
    
 
-  <form name='formulario' id='formulario' method='post' action='incluirfacturacion.php?cedula=$cedula' target='_self' enctype="multipart/form-data"> 
+  <form name='formulario' id='formulario' method='post' action='incluirfacturacion.php?cedula=$cedula&email=$email' target='_self' enctype="multipart/form-data"> 
 
   <table border="1" cellspacing="20" cellpadding="10" width="800"> 
 
@@ -80,6 +81,8 @@
         <?php
             
             $cedula=$_GET['cedula'];
+            $email=$_GET['email'];
+
 
             $session['cedula'] = $cedula;
             include ("php/connect.php");
@@ -145,7 +148,7 @@
                       echo '<option  value="'.$ccc.'">'.$ccc.'</option>';
               }
           ?>
-        </select>
+        </select> 
      </td>      
     </tr>
     <tr>
@@ -280,6 +283,8 @@
           <input type="submit" value="Cargar la Factura"  >
          </td>
       <input type="hidden" name="CEDULAFACTURA" value="<?php echo $cedula; ?> "> 
+      <input type="hidden" name="EMAILFACTURA" value="<?php echo $email; ?> "> 
+
  
     </tr> 
   </table>
@@ -294,8 +299,8 @@
     </div>
 
 
-  <?php include("footer.php") ?>
   </section>
+  <?php include("footer.php") ?>
 
 </body> 
 </html> 

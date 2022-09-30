@@ -38,6 +38,8 @@ $NOMBREFACTURA        = $_POST["NOMBREFACTURA"];
 $DESCRIPCIONFACTURA   = $_POST["DESCRIPCIONFACTURA"];
 $MONTOFACTURA         = $_POST["MONTOCFACTURA"];
 $CEDULAFACTURA        = $_POST["CEDULAFACTURA"];
+$EMAILFACTURA         = $_POST["EMAILFACTURA"];
+
 
 $unmail = explode(" ", $COD); 
 
@@ -77,9 +79,7 @@ if ($mysqli->query($sql) == FALSE) {
                 echo "<br><br><br><br><br><br>";
                 echo "<center style='color:#e77b16'><h1>Error Cargando el Registro,,,, este puede estar duplicado... Corrija</h1>";   
                 echo "<center style='color:#e77b16'>";
-
-                echo "<form id='form1' name='form1' method='post' action='tablafacturacion.php?cedula=$CEDULAFACTURA'>";
-                
+                echo "<form id='form1' name='form1' method='post' action='tablafacturacion.php?cedula=$CEDULAFACTURA&email=$EMAILFACTURA'>";                
                 echo "<input type='submit' value='Continuar'>";
                 echo "</form>";
 }
@@ -90,7 +90,7 @@ else
                 echo "<center style='color:#e77b16'><h1>El Registro ha sido Incluido con exito</h1>";   
                 echo "<center style='color:#e77b16'>";
 
-                echo "<form id='form1' name='form1' method='post' action='tablafacturacion.php?cedula=$CEDULAFACTURA'>";
+                echo "<form id='form1' name='form1' method='post' action='tablafacturacion.php?cedula=$CEDULAFACTURA&email=$EMAILFACTURA'>";
                 
                 echo "<input type='submit' value='Continuar'>";
                 echo "</form>";

@@ -172,7 +172,7 @@ $result=mysqli_query($mysqli,$sql);
 
 <!-- Main Footer -->
 <?php
-include("Footer.php");
+include("footer.php");
 ?>
   
 <!-- jQuery 2.2.0 -->  

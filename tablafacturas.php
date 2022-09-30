@@ -1,4 +1,3 @@
-<?php   include("redessociales.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -42,12 +41,14 @@
             <?php
                
               $cedula=$_GET['cedula'];
-              echo "<a href='administrador.php?cedula=$cedula'>Regresar al Menu Anterior</a>";
+              $email=$_GET['email'];
+
+              echo "<a href='administrador.php?cedula=$cedula&email=$email'>Regresar al Menu Anterior</a>";
              echo "<br>"; 
  
                   echo "<h5 > 
                             <A style='color:navy'><b> Pulse </b> </A>
-                            <A style='color:red' href='incluirentablafacturas.php?cedula=$cedula'><b>  AQUI </b> </A> 
+                            <A style='color:red' href='incluirentablafacturas.php?cedula=$cedula&email=$email'><b>  AQUI </b> </A> 
                             <A style='color:navy'> <b> si desea  Incluir mas  descripciònes de facturas <b></A>
                         </h5>" ;
 
@@ -69,8 +70,8 @@
     <tbody>
       <?php
       
-      $cedula = $_GET['cedula'];
-
+      $cedula               =$_GET['cedula'];
+      $email               =$_GET['email'];
         include ("php/connect.php");
         $query="SELECT * FROM descripcionfacturas ";
         $consulta1=$mysqli->query($query);
@@ -87,7 +88,7 @@
             <td>
               
 
-            <a href='modtablafacturas.php?parametro=".$fila['CODIGOFACTURA']."&cedula=$cedula '>Modificar</a></td> 
+            <a href='modtablafacturas.php?parametro=".$fila['CODIGOFACTURA']."&cedula=$cedula&email=$email'>Modificar</a></td> 
             
    
           </tr>";
@@ -97,7 +98,6 @@
       ?>      
     </tbody>
   </table>
- &nbsp;&nbsp;&nbsp;
-<?php include("footer.php") ?>
+ <?php include("footer.php") ?>
 </body> 
 </html> 

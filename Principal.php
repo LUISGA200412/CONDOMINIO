@@ -315,9 +315,14 @@ table#propaganda5
 			 </h5>" ;
 		echo "<h5 style='color:blue; margin-left: 130px'>
 			 	<A href='seleccionarecibos.php?cedula=$cedula&email=$email'>	
-			 		3.- Consultar Recibos de Pago 
+			 		3.- Consultar Recibos de Pago
 			 	</A>
 			 </h5>" ;
+
+       echo "<h5 style='color:blue; margin-left: 130px'>
+  
+       </A>
+     </h5>" ;
 	}
 }
 else { 

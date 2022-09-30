@@ -31,7 +31,9 @@
             <?php
                
               $cedula=$_GET['cedula'];
-              echo "<a href='tablafacturas.php?cedula=$cedula'>Regresar al Menu Anterior</a>";
+              $email=$_GET['email'];
+
+              echo "<a href='tablafacturas.php?cedula=$cedula&email=$email'>Regresar al Menu Anterior</a>";
             ?>
       </b></h2>
 
@@ -40,7 +42,8 @@
   </header> 
 
   <?php 
-   $cedula=$_GET['cedula'];
+$cedula               =$_GET['cedula'];
+$email               =$_GET['email'];
             include ("php/connect.php");
 
     $sql="SELECT * FROM `descripcionfacturas` order BY CODIGOFACTURA DESC LIMIT 1";
@@ -54,7 +57,7 @@
     }
   ?>
 
-  <form action="incluirtablafacturas.php?cedula=$cedula" method="GET">
+  <form action="incluirtablafacturas.php?cedula=$cedula&email=$email" method="GET">
 
     <table border="4" align="center" width="800">
  <thead>
@@ -82,6 +85,8 @@
  
 <input type="hidden" name="codfacturas" value="<?php echo $codfacturas; ?>">
 <input type="hidden" name="cedula" value="<?php echo $cedula; ?>">
+<input type="hidden" name="email" value="<?php echo $email; ?>">
+
 
   </form>
 

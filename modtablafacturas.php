@@ -31,7 +31,9 @@
             <?php
                
               $cedula=$_GET['cedula'];
-              echo "<a href='tablafacturas.php?cedula=$cedula'>Regresar al Menu Anterior</a>";
+              $email=$_GET['email'];
+
+              echo "<a href='tablafacturas.php?cedula=$cedula&email=$email'>Regresar al Menu Anterior</a>";
             ?>
       </b></h2>
 
@@ -42,7 +44,8 @@
   <?php 
 
  $codfacturas=$_GET["parametro"];
- 
+ $cedula=$_GET['cedula'];
+ $email=$_GET['email'];
 
  
  
@@ -54,7 +57,7 @@
 
   ?>
 
-  <form action="capturamodtablafacturas.php?cedula=$cedula" method="post">
+  <form action="capturamodtablafacturas.php?cedula=$cedula&email=$email" method="post">
 
     <table border="4" align="center" width="800">
  <thead>
@@ -82,6 +85,8 @@
  
 <input type="hidden" name="codfacturas" value="<?php echo $codfacturas; ?>">
 <input type="hidden" name="cedula" value="<?php echo $cedula; ?>">
+<input type="hidden" name="email" value="<?php echo $email; ?>">
+
 
   </form>
 

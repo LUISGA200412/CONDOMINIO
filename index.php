@@ -243,7 +243,9 @@
                 <p>Clave  :    <input type="password" name="cedula" ></p>
                 <input style="margin-left: 100px" type="submit" value="Ingresar">
                 </form>
- 			<?php
+                <a href="https://github.com/LUISGA200412/CONDOMINIO.git" >gdfdfd
+            <?php
+            
 				include("redessociales.php");
 			?>
 

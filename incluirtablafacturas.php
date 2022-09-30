@@ -29,6 +29,7 @@
 
  
 $cedula               =$_GET['cedula'];
+$email               =$_GET['email'];
 $descripcionfacturas  =$_GET['desfacturas'];
 $codigofactura        =$_GET['codfacturas']; 
 
@@ -41,7 +42,7 @@ if ($mysqli->query($sql) === FALSE) {
                 echo "<center style='color:#e77b16'><h1>Error Cargando el Registro,,,, este puede estar duplicado... Corrija</h1>";   
                 echo "<center style='color:#e77b16'>";
 
-                echo "<form id='form1' name='form1' method='post' action='tablafacturass.php?cedula=$cedula'>";
+                echo "<form id='form1' name='form1' method='post' action='tablafacturass.php?cedula=$cedula&email=$email'>";
                 
                 echo "<input type='submit' value='Continuar'>";
                 echo "</form>";
@@ -53,7 +54,7 @@ else
                 echo "<center style='color:#e77b16'><h1>El Registro ha sido Incluido con exito</h1>";   
                 echo "<center style='color:#e77b16'>";
 
-                echo "<form id='form1' name='form1' method='post' action='tablafacturas.php?cedula=$cedula'>";
+                echo "<form id='form1' name='form1' method='post' action='tablafacturas.php?cedula=$cedula&email=$email'>";
                 
                 echo "<input type='submit' value='Continuar'>";
                 echo "</form>";
