@@ -1,0 +1,81 @@
+.container1 {
+    padding:1rem 1rem;
+  }
+  
+  
+ .grid-notas {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr; /* 30px 30px 30px or repeat(3, 1fr)*/
+   grid-gap: 5px;
+   color: black;
+ }
+ 
+ .grid-notas5 {
+  display: grid;
+  grid-gap: 5px;
+  background-color: rgba(245, 210, 210, 0.975);
+  color: black;
+  grid-template-columns: repeat(2, 1fr);
+   
+}
+  .nota{
+   display: block; 
+   padding: 10px;
+   /*background-color: rgba(207, 214, 248, 0.635);*/
+   font-size: 14px;
+    width: 500px;
+   }
+   .nota1{
+    display: block; 
+    background: #f0f7c3;
+    font-size: 14px;
+    text-align: justify;
+ 
+    padding: 2px;
+
+   }
+   .nota2{
+    display: block; 
+    background: #dff4f5;
+    font-size: 14px;
+    text-align: justify;
+    padding: 2px ;
+
+
+   }
+   .nota3{
+    display: block; 
+    background: #f9f7db;
+    font-size: 14px;
+    text-align: justify;
+    padding: 2px ;
+
+   } 
+  
+  a:hover{
+    color: red;
+    font-weight: bold;
+  }
+
+  a:link{
+    color: rgb(110, 10, 250);
+    font-weight: bold;
+  }
+  
+  
+ .text-center {
+   text-align: center;
+   margin: 0;
+ }
+
+ .ir-arriba {
+	display:inline-block;
+	padding:20px;
+	background:rgb(245, 2, 2);
+/*	font-size:200px;
+	color:#fff;*/
+	cursor:pointer;
+	position: fixed;
+	bottom:60px;
+	right:20px;
+} 
