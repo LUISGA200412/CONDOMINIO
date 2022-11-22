@@ -48,6 +48,11 @@ $apar = $unmail[1];
 $cedula = $unmail[2]; 
 $email = $unmail[3]; 
 
+$unmail[2] =  $_POST["cedula"];
+$unmail[3] = $_POST["email"]; 
+
+$cedula = $unmail[2]; 
+$email = $unmail[3];
 
 
 

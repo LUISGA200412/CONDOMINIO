@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Top Navigation</title>
+  <title>Condominio</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -21,72 +21,45 @@
 
 </head>
  
-<body class="hold-transition skin-yellow layout-top-nav">
+<body class="hold-transition skin-red layout-top-nav">
 
 <!-- AQUI EMPIEZA BARRA DE NAVEGACION --> 
-<?php
-	include("BarraNavegacion.php");
-?>
+ 
 <!-- AQUI FINALIZA BARRA DE NAVEGACION -->   
-<span class="ir-arriba fa  fa-arrow-up"></span>
+  
 
     <div class="content-wrapper">
       <div class="container">
 
 <!-- DESDE AQUI SE DEBE PONER LOS CODIGOS --> 
+                <div class="text-center">
+                <h1>
+                    <?php
+                    include ("conexion.php");
 
-    <section >
-      
-            <div class="text-center">
-                <h1>Seleccionar Recibos de Pagos</h1>
-            </div>
+                    $query="SELECT * FROM apartamentos WHERE  CEDULA=6821253";
+                    $consulta2=$mysqli->query($query);
+                  
+                     $fila=$consulta2->fetch_array(MYSQLI_ASSOC);
+                  
+                      echo "AUN NO ESTAS REGISTRADO !<br>";
+                      echo "COMUNICATE CON EL ADMINISTRADOR DEL EDIFICIO <br>";
 
-         
-      <table border="0"  align="center"  
-      style="background-color: gold; color:aliceblue; font-weight: bold; font-size:20px; ">
-
-        <?php  
-
-          $ii = 0;
-       
-          $the_array = Array(); 
-          $handle = opendir('fpdf/RECIBOSDEPAGO'); 
-          while (false !== ($file = readdir($handle))) 
-          { 
-                if ($file != "." && $file != "..") 
-                { 
-                  $the_array[] = $file; 
-                } 
-          } 
-          closedir($handle); 
-          sort ($the_array); 
-
-
-          foreach($the_array as $val)
-          {     
-
-              echo "<tr>";
-              echo "<td align='center' WIDTH='100'>"; 
-               $ii++;
-               echo $ii;
-              echo "</td>";
-
-              echo "<td align='center' WIDTH='300' >"; 
-              
-                echo "<a target='_blank' href='fpdf/RECIBOSDEPAGO/$val'> $val</a>"; 
-                echo "</td>";
-                echo "</tr>";   
-          }
-          //$xx = end( $the_array );
-          //echo "<a href='../fpdf/RECIBOSDEPAGO/$xx'>$xx</a>"; 
-         
- 
-        ?>
-
-      </table>
-      
-    </section>
-
+                      echo "<h7 style='color:red; margin-left: 100px'>";
+                      echo $fila['NOMBRE']." ".$fila['APELLIDO'];
+                      echo "</h7>";
+                      
+                      echo "<h6 style='color:BLUE'>";
+                      echo "Por su Email : ".$fila['CORREOA']." o Por su Telefono ".$fila['TELEFONOCE'];
+                      echo "</h6>";
+                  
+                  
+                      echo "<h4 style='margin-left: 100px'>"; 
+                      echo "<A  HREF='index.php' > PULSA PARA REGRESAR </A>";
+                      echo "</h4>";
+                      ?>
+                </h1>
+                </div>
 <!-- HASTA AQUI SE DEBE PONER LOS CODIGOS --> 
 
       </div>  
@@ -127,7 +100,5 @@
     });
   });
 </script> 
-<script src="acordeon.js"></script>
-<script src="arriba.js"></script>
 </body>
 </html>

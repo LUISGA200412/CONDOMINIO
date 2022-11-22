@@ -1,27 +1,4 @@
-<?php   include("redessociales.php") ?>
-<!DOCTYPE html>
-<html lang="en">
-<head> 
-  <meta charset="utf-8">
-  <title>Sayecito</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-
-
-</head> 
-<body> 
-
+ 
 
 <?php
  
@@ -33,7 +10,7 @@
     $email=$_POST['email'];
 
     $codfacturas=$_POST["codfacturas"];
-    $desfacturas=$_POST["desfacturas"];
+    $desfacturas=strtoupper($_POST["desfacturas"]);
    
 
      include ("php/connect.php");
@@ -64,6 +41,3 @@
     echo "Error updating record: " . mysqli_error($conexion);
 }
 ?>
-
-</body> 
-</html> 

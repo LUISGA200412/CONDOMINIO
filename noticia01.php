@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Top Navigation</title>
+  <title>Condominio</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -21,71 +21,27 @@
 
 </head>
  
-<body class="hold-transition skin-yellow layout-top-nav">
+<body class="hold-transition skin-red layout-top-nav">
 
 <!-- AQUI EMPIEZA BARRA DE NAVEGACION --> 
 <?php
 	include("BarraNavegacion.php");
 ?>
 <!-- AQUI FINALIZA BARRA DE NAVEGACION -->   
-<span class="ir-arriba fa  fa-arrow-up"></span>
+  
 
     <div class="content-wrapper">
       <div class="container">
 
 <!-- DESDE AQUI SE DEBE PONER LOS CODIGOS --> 
 
-    <section >
-      
-            <div class="text-center">
-                <h1>Seleccionar Recibos de Pagos</h1>
-            </div>
-
-         
-      <table border="0"  align="center"  
-      style="background-color: gold; color:aliceblue; font-weight: bold; font-size:20px; ">
-
-        <?php  
-
-          $ii = 0;
-       
-          $the_array = Array(); 
-          $handle = opendir('fpdf/RECIBOSDEPAGO'); 
-          while (false !== ($file = readdir($handle))) 
-          { 
-                if ($file != "." && $file != "..") 
-                { 
-                  $the_array[] = $file; 
-                } 
-          } 
-          closedir($handle); 
-          sort ($the_array); 
-
-
-          foreach($the_array as $val)
-          {     
-
-              echo "<tr>";
-              echo "<td align='center' WIDTH='100'>"; 
-               $ii++;
-               echo $ii;
-              echo "</td>";
-
-              echo "<td align='center' WIDTH='300' >"; 
-              
-                echo "<a target='_blank' href='fpdf/RECIBOSDEPAGO/$val'> $val</a>"; 
-                echo "</td>";
-                echo "</tr>";   
-          }
-          //$xx = end( $the_array );
-          //echo "<a href='../fpdf/RECIBOSDEPAGO/$xx'>$xx</a>"; 
-         
- 
-        ?>
-
-      </table>
-      
-    </section>
+        <div class="text-center">
+           <br><img src="img/imagen01.jpg" width="400px" height="400px"/>
+        </div>   
+    
+        <h4> 
+<b>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat non pariatur nesciunt reiciendis optio eum accusantium ipsam magni! Ab labore laudantium nisi expedita, dolorum corporis exercitationem provident excepturi earum cum rem iure id. Omnis quibusdam aperiam quam eius aliquam dolorum quaerat blanditiis odio quisquam, accusamus dolor commodi saepe magni rem. </b>
+        </h4>
 
 <!-- HASTA AQUI SE DEBE PONER LOS CODIGOS --> 
 
@@ -127,7 +83,5 @@
     });
   });
 </script> 
-<script src="acordeon.js"></script>
-<script src="arriba.js"></script>
 </body>
 </html>

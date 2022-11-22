@@ -1,31 +1,42 @@
-<?php   include("redessociales.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 <head> 
   <meta charset="utf-8">
   <title>Sayecito</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
 
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700|Roboto:400,900" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-
-
+   <!-- Tell the browser to be responsive to screen width -->
+   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="css/entrada.css">
 
 
 </head> 
-<body> 
+<body class="hold-transition skin-blue layout-top-nav">
+
+<!-- AQUI EMPIEZA BARRA DE NAVEGACION --> 
+ 
+
+<!-- AQUI FINALIZA BARRA DE NAVEGACION -->   
+  
+<div class="content-wrapper">
+      <div class="container">
+  
+<!-- DESDE AQUI SE DEBE PONER LOS CODIGOS --> 
+  
+
   <header id="header">
 
-    <div class="container">
+   
 
       <h2 align="center"><b>
             <?php
@@ -37,7 +48,7 @@
             ?>
       </b></h2>
 
-    </div>
+ 
     
   </header> 
 
@@ -59,9 +70,9 @@ $email               =$_GET['email'];
 
   <form action="incluirtablafacturas.php?cedula=$cedula&email=$email" method="GET">
 
-    <table border="4" align="center" width="800">
+    <table border="4" align="center" width="1000">
  <thead>
-    <tr>
+    <tr class="text-center ">
       <td>Codigo de la Factura</td> 
      <td>Descripción de la Factura</td> 
     </tr>
@@ -71,12 +82,12 @@ $email               =$_GET['email'];
 
     <tr>
      
-      <td><?php echo $codfacturas ?></td>
-        <td><input type="text" name="desfacturas" value="" size="50" maxlength="50" required></td>
+      <td class="text-center"><?php echo $codfacturas ?></td>
+      <td><input type="text" size="100" name="desfacturas" value="" size="50" required></td>
     </tr>
  
     <tr>
-      <td colspan="2"><input type="submit" value="Guardar"></td>
+      <td  class="text-center"  colspan="2"><br><input type="submit" value="Guardar"></td>
     </tr>
 
   <?php } ?>
@@ -90,6 +101,44 @@ $email               =$_GET['email'];
 
   </form>
 
+<!-- HASTA AQUI SE DEBE PONER LOS CODIGOS --> 
 
+</div>
+</div>
+ 
+<!-- FOOTER --> 
+<?php
+include("footer.php");
+?>
+ 
+
+<!-- jQuery 2.2.0 -->
+<script src="plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+ <!-- DataTables -->
+ <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script> 
 </body> 
 </html> 

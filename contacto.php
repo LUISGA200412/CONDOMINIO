@@ -22,6 +22,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--coact start here-->
 
 <div class="contact">
+
+    <h1 align="center" ><b>
+            <?php
+              
+               $cedula=$_GET['cedula'];
+              $email=$_GET['email'];
+              $VENGO=$_GET['VENGO'];
+
+
+              echo "<A href='$VENGO?cedula=$cedula&email=$email'>Regresar al Menu Anterior</A>";
+            ?>
+      </b>
+    </h1>
+
+
+
   <div class="contact-main">
   <form method="post">
   
@@ -46,20 +62,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         //$mail_addAddress="luisegd160354@gmail.com";//correo electronico que recibira el mensaje
         //$template="email_template.html";//Ruta de la plantilla HTML para enviar nuestro mensaje
         
-        /*Inicio captura de datos enviados por $_POST para enviar el correo */
+        //Inicio captura de datos enviados por $_POST para enviar el correo
+
         $contacto   = $_GET['contacto'];
         $to         = $_GET['para'];
+        
+        
         $header     = $_POST['customer_email'];
         $from_name  = $_POST['customer_name'];
         $body       = $_POST['message'];
         $subject    = $_POST['subject'];
         
-/* $from_name = "luisgomez";
-$from_email = "luisegd3718@gmail.com";
-$header = "From: $from_name <$from_email>";
-$body = "Hola, \nEsto es una prueba de correo de $from_name <$from_email>.";
-$subject = "Prueba de correo Sendmail";
-$to = "luisegd160354@gmail.com"; */
+//$from_name = "luisgomez";
+//$from_email = $header;
+$header = "de: $from_name <$header>";
+//$body = "Hola, carajo a ver si funciona\nEsto es una prueba de correo de $from_name <$from_email>.";
+//$subject = "Prueba de correo Sendmail";
+//$to = "luisegd160354@gmail.com"; 
+//$mail­>AddAttachment("img/1.png");
+
 
           if (mail($to, $subject, $body, $header)) 
           {
@@ -73,7 +94,7 @@ $to = "luisegd160354@gmail.com"; */
           }       
  
           echo "<br>";
-          echo "<p align='center' > <a href='index.php'>Regresar al Menu Anterior</a> </p>";
+          echo "<p align='center' > <a href='Principal.php'>Regresar al Menu Anterior</a> </p>";
          
 
 

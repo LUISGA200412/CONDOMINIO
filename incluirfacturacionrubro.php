@@ -20,67 +20,93 @@
 
 
 </head> 
-<body class="hold-transition skin-red layout-top-nav">
-
-<!-- AQUI EMPIEZA BARRA DE NAVEGACION --> 
- 
-<!-- AQUI FINALIZA BARRA DE NAVEGACION -->   
-
-
-<div class="content-wrapper">
-      <div class="container">
-
-<!-- DESDE AQUI SE DEBE PONER LOS CODIGOS --> 
+<body>  
 
  
-
- 
+  <div align="center"  > 
    
 
 <?php
-//print_r($_POST);
 
-include ("conexion.php");
+print_r($_POST);
 
+$fechaActual = date('Y-m-d');
+
+include ("php/connect.php");
+
+$TIPOFACTURACION      = $_POST["TIPOFACTURACION"];
 $MESFACTURA           = $_POST["MES"];
 $ANOFACTURA           = $_POST["ANO"];
-//$COD                  = $_POST["CODIGOFACTURA"];
-$CODIGOFACTURA        = $_POST["CODIGOFACTURA"];
-$FECHAFACTURA         = $_POST["FECHAFACTURA"];
-$RIFFACTURA           = $_POST["RIFFACTURA"];
-$NUMEROFACTURA        = $_POST["NUMEROFACTURA"];
-$NOMBREFACTURA        = strtoupper($_POST["NOMBREFACTURA"]);
-$DESCRIPCIONFACTURA   = strtoupper($_POST["DESCRIPCIONFACTURA"]);
+$COD                  = $_POST["CODIGOFACTURA"];
+ 
+ 
 $MONTOFACTURA         = $_POST["MONTOCFACTURA"];
 $CEDULAFACTURA        = $_POST["CEDULAFACTURA"];
 $EMAILFACTURA         = $_POST["EMAILFACTURA"];
 
 
- 
- 
-$sql= "UPDATE facturacion 
-SET 
+$unmail = explode(" ", $COD); 
+
+echo print_r($unmail); echo "<br>";
+
+$CODIGOFACTURA = $unmail[0]; 
 
 
-FECHAFACTURACION        = '$FECHAFACTURA',
-RIFFACTURACION          = '$RIFFACTURA',
-NUMEROFACTURACION       = '$NUMEROFACTURA',
-NOMBREFACTURACION       = '$NOMBREFACTURA',
-DESCRIPCIONFACTURACION  = '$DESCRIPCIONFACTURA',
-MONTOFACTURACION        = $MONTOFACTURA
-
-WHERE 
-MESFACTURACION  = $MESFACTURA and 
-ANOFACTURACION = $ANOFACTURA and 
-CODIGOFACTURACION = $CODIGOFACTURA " ;
+echo $MESFACTURA.'<br>' ;
+echo $ANOFACTURA.'<br>';
+echo $CODIGOFACTURA.'<br>';
+echo $fechaActual.'<br>';
+echo $MONTOFACTURA.'<br>';
+echo $CODIGOFACTURA.'<br>';
+echo $CEDULAFACTURA.'<br>';
+echo $TIPOFACTURACION.'<br>';
 
 
+
+$sql="INSERT INTO facturacion 
+(
+  MESFACTURACION, 
+  ANOFACTURACION,
+  CODIGOFACTURACION, 
+  FECHAFACTURACION, 
+  RIFFACTURACION, 
+  NUMEROFACTURACION, 
+  NOMBREFACTURACION, 
+  DESCRIPCIONFACTURACION, 
+  MONTOFACTURACION,  
+  CIERREMES, 
+  CEDULAAUTORIZADO,
+  FOTOFACTURA,
+  TIPOFACTURACION
+) 
+VALUES 
+( 
+  '$MESFACTURA',
+  '$ANOFACTURA',  
+  '$CODIGOFACTURA',
+  '$fechaActual',
+  '1',
+  '1',
+  '1',
+  '1',
+  '$MONTOFACTURA',
+  '0',
+  '$CEDULAFACTURA',
+  '',
+  '$TIPOFACTURACION'
+)      
+
+";     
+
+
+
+// INSERT INTO `facturacion`(`MESFACTURACION`, `ANOFACTURACION`, `CODIGOFACTURACION`, `FECHAFACTURACION`, `RIFFACTURACION`, `NUMEROFACTURACION`, `NOMBREFACTURACION`, `DESCRIPCIONFACTURACION`, `MONTOFACTURACION`, `CIERREMES`, `CEDULAAUTORIZADO`, `FOTOFACTURA`) VALUES ( '11', '2022', '8', '2022-01-01', '1', '2', '3', '4', '0', '1', '2', ' ' )
 if ($mysqli->query($sql) == FALSE) {
 
                 echo "<br><br><br><br><br><br>";
-                echo "<center style='color:#e77b16'><h1>Error Actualizando el Registro,,,, este puede estar duplicado... Corrija</h1>";   
+                echo "<center style='color:#e77b16'><h1>Error Cargando el Registro,,,, este puede estar duplicado... Corrija</h1>";   
                 echo "<center style='color:#e77b16'>";
-                echo "<form id='form1' name='form1' method='post' action='tablafacturacion.php?cedula=$CEDULAFACTURA&email=$EMAILFACTURA'>";                
+                echo "<form id='form1' name='form1' method='post' action='CargarRubrosCondominio.php?tipofacturacion=$TIPOFACTURACION&cedula=$CEDULAFACTURA&email=$EMAILFACTURA'>";                
                 echo "<input type='submit' value='Continuar'>";
                 echo "</form>";
 }
@@ -88,10 +114,10 @@ else
 {
 
                 echo "<br><br><br><br><br><br>";
-                echo "<center style='color:#e77b16'><h1>El Registro Actualizado con exito</h1>";   
+                echo "<center style='color:#e77b16'><h1>El Registro ha sido Incluido con exito</h1>";   
                 echo "<center style='color:#e77b16'>";
 
-                echo "<form id='form1' name='form1' method='post' action='tablafacturacion.php?cedula=$CEDULAFACTURA&email=$EMAILFACTURA'>";
+                echo "<form id='form1' name='form1' method='post' action='CargarRubrosCondominio.php?tipofacturacion=$TIPOFACTURACION&cedula=$CEDULAFACTURA&email=$EMAILFACTURA'>";
                 
                 echo "<input type='submit' value='Continuar La Carga de Facturas'>";
                 echo "</form>";
@@ -104,14 +130,9 @@ $mysqli->close();
 
 ?>
  
-  
+  </div>
+<!-- FOOTER --> 
 
-<!-- HASTA AQUI SE DEBE PONER LOS CODIGOS --> 
-
-</div>  
-    </div>
- 
-<!-- FOOTER -->  
 <?php
 	include("footer.php");
 ?> 

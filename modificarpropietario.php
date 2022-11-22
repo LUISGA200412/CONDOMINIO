@@ -116,7 +116,7 @@
           <td>".$fila['CORREOA']."</td>
           <td>".$fila['TELEFONOCA']."</td>
 
-          <td><a href='modtablapropietario.php?parametro=" 
+          <td><a href='modtablapropietario.php?cedula=$cedula&email=$email&parametro=" 
           .$fila['PISO']. "."
           .$fila['APARTAMENTO']. "."  
           .$_GET['cedula']. "."
@@ -147,7 +147,7 @@
 
 <!-- Main Footer -->
 <?php
-include("Footer.php");
+include("footer.php");
 ?>
   
 <!-- jQuery 2.2.0 -->  

@@ -13,6 +13,7 @@
  
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.css">
+  <link rel="stylesheet" href="css/entrada.css">
   <script src="js/jquery-3.5.1.min.js"></script>
   <script src="js/main.js"></script>
 
@@ -235,18 +236,19 @@
  
             <div class="sub-content">
                 <h3>Residencias Sayecito</h3>
-        	   	<img src="img/sayecito.png" /> 
-        	  
+        	   	<img src="img/sayecito.png" />
             </div> 
-                <form method="get" action="Principal.php" >
+            <br>
+                <form  class="text-center" method="get" action="Principal.php" >
                 <p>Email  :    <input type="email" name="email" > </p>
                 <p>Clave  :    <input type="password" name="cedula" ></p>
-                <input style="margin-left: 100px" type="submit" value="Ingresar">
+                <input class="text-center" type="submit" value="Ingresar">
                 </form>
-                <a href="https://github.com/LUISGA200412/CONDOMINIO.git" >gdfdfd
+          <!--      <a href="https://github.com/LUISGA200412/CONDOMINIO.git" >gdfdfdV -->
+            <br>
             <?php
-            
-				include("redessociales.php");
+                  
+				include("footer.php");
 			?>
 
             <div class="line"></div>

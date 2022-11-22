@@ -71,26 +71,31 @@
 	<div class="content-wrapper">
 		<section class="content">
 
-    <h3 align="center">
+<!-- DESDE AQUI SE DEBEN PONER LOS PROGRAMAS -->
+
+<h1 class="text-center">
                 
                 <?php 
-                           
+                          // print_r($_GET); 
                   $cod=$_GET["parametro"];
                   $unmail = explode(".", $cod); 
                   $piso = $unmail[0]; 
                   $apar = $unmail[1]; 
                   $cedula = $unmail[2]; 
                   $email = $unmail[3]; 
-          
-          
+
+                  //$cedula = $_GET["cedula"];
+                  // $email = $_GET["email"];
+
+                 $unmail[2] =  $_GET["cedula"];
+                 $unmail[3] = $_GET["email"]; 
+                 
+                 $cedula = $unmail[2]; 
+                 $email = $unmail[3];
+
                    echo "<A href='modificarpropietario.php?cedula=$cedula&email=$email'>Regresar al Menu Anterior</A>";
                 ?>
-          
-            </h3>
-
-
-<!-- DESDE AQUI SE DEBEN PONER LOS PROGRAMAS -->
-
+</h1>
  
 
 <?php 
@@ -104,7 +109,7 @@ $result=mysqli_query($mysqli,$sql);
 
 <form action="capturamodtablapropietario.php" method="POST">
 
-<table border="4" align="center" width="500">
+<table border="4" align="center"  width="600">
 
 <?php foreach ($result as $key => $value)  {?>
 
@@ -120,37 +125,38 @@ $result=mysqli_query($mysqli,$sql);
 
 <tr>
 <td>Nombre</td> 
-      <td><input type="text" name="txnombre" value="<?php echo $value["NOMBRE"]; ?>" required></td>
+      <td><input type="text" size="50" name="txnombre" value="<?php echo $value["NOMBRE"]; ?>" required></td>
 </tr>
 
 <tr>
 <td>Apellido</td> 
-      <td><input type="text" name="txapellido" value="<?php echo $value["APELLIDO"]; ?>" required></td>
+      <td><input type="text" size="50" name="txapellido" value="<?php echo $value["APELLIDO"]; ?>" required></td>
 </tr>
 
 <tr>
 <td>Email Principal</td>
-      <td><input type="text" name="txcorreoa" value="<?php echo $value["CORREOA"]; ?>" required></td>
+      <td><input type="text" size="50" name="txcorreoa" value="<?php echo $value["CORREOA"]; ?>" required></td>
 </tr>
 
 <tr>
 <td>Email Secundario</td>
-      <td><input type="text" name="txcorreob" value="<?php echo $value["CORREOB"]; ?>" required></td>
+      <td><input type="text" size="50" name="txcorreob" value="<?php echo $value["CORREOB"]; ?>" required></td>
 </tr>
 
 <tr>
 <td>Telefono Hogar</td> 
-      <td><input type="text"  name="txtelefonoca" value="<?php if(is_numeric($value["TELEFONOCA"])) {echo $value["TELEFONOCA"]; } else { echo " NO es numérico"; } ?> " required></td>
+      <td><input type="text"  size="50" name="txtelefonoca" value="<?php if(is_numeric($value["TELEFONOCA"])) {echo $value["TELEFONOCA"]; } else { echo " NO es numérico"; } ?> " required></td>
 </tr>
 
 <tr>
 <td>Telefono Celula</td> 
-      <td><input type="text"  name="txtelefonoce" value="<?php if(is_numeric($value["TELEFONOCE"])) {echo $value["TELEFONOCE"]; } else { echo " NO es numérico"; } ?> " required></td>
+      <td><input type="text"  size="50" name="txtelefonoce" value="<?php if(is_numeric($value["TELEFONOCE"])) {echo $value["TELEFONOCE"]; } else { echo " NO es numérico"; } ?> " required></td>
 </tr>
 
 
 <tr>
-  <td colspan="2"><input type="submit" value="Guardar"></td>
+  <br>
+  <td class="text-center" colspan="2"><input type="submit" value="Guardar"></td>
 </tr>
 
 <?php } ?>

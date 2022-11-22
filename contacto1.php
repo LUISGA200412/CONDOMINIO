@@ -1,39 +1,54 @@
 <?php
-require 'class.phpmailer.php';
-$mail = new PHPMailer();
-$mail->IsSMTP();
-$mail->Mailer = 'smtp';
-$mail->SMTPAuth = true;
-$mail->Host = 'smtp.gmail.com'; // "ssl://smtp.gmail.com" didn't worked
-$mail->Port = 465;
-$mail->SMTPSecure = 'tls';
-// or try these settings (worked on XAMPP and WAMP):
-// $mail->Port = 587;
-// $mail->SMTPSecure = 'tls';
+//Recipiente
+$to = 'luisegd160354@gmail.com';
 
+//remitente del correo
+$from = 'luisegd160354@gmail.com';
+$fromName = 'Adminnistrador Residencias Sayecito';
 
-$mail->Username = "luisegd160354@gmail.com";
-$mail->Password = "gabriel200412**";
+//Asunto del email
+$subject = 'Recibo de Pago de Condominio del Mes';
 
-// $mail->IsHTML(true); // if you are going to send HTML formatted emails
-//$mail->SingleTo = true; // if you want to send a same email to multiple users. multiple emails will be sent one-by-one.
+//Ruta del archivo adjunto
+$file = "fpdf/RECIBOSDEPAGO/condominio-del-202210.pdf";
 
-$mail->From = "luisegd160354@gmail.com";
-$mail->FromName = "Administrador";
+//Contenido del Email
+$htmlContent = '<h1>Favor no dar Reply a este COrreo</h1>';
 
-//$mail->addAddress("user.1@yahoo.com","User 1");
-//$mail->addAddress("user.2@gmail.com","User 2");
+//Encabezado para información del remitente
+$headers = "De: $fromName"." <".$from.">";
 
- $mail->addAddress("luisegd160354@hotmail.com", "CARA CULO");
+//Limite Email
+$semi_rand = md5(time()); 
+$mime_boundary = "==Multipart_Boundary_x{$semi_rand}x"; 
 
-// $mail->addCC("user.3@ymail.com","User 3");
-// $mail->addBCC("user.4@in.com","User 4");
+//Encabezados para archivo adjunto 
+$headers .= "\nMIME-Version: 1.0\n" . "Content-Type: multipart/mixed;\n" . " boundary=\"{$mime_boundary}\""; 
 
-$mail->Subject = "Testing PHPMailer with localhost";
-$mail->Body = "Hi,<br /><br />This system is working perfectly.";
+//límite multiparte
+$message = "--{$mime_boundary}\n" . "Content-Type: text/html; charset=\"UTF-8\"\n" .
+"Content-Transfer-Encoding: 7bit\n\n" . $htmlContent . "\n\n"; 
 
-if(!$mail->Send())
-    echo "Message was not sent <br />PHPMailer Error: " . $mail->ErrorInfo;
-else
-    echo "Message has been sent";
-?>
+//preparación de archivo
+if(!empty($file) > 0){
+    if(is_file($file)){
+        $message .= "--{$mime_boundary}\n";
+        $fp =    @fopen($file,"rb");
+        $data =  @fread($fp,filesize($file));
+
+        @fclose($fp);
+        $data = chunk_split(base64_encode($data));
+        $message .= "Content-Type: application/octet-stream; name=\"".basename($file)."\"\n" . 
+        "Content-Description: ".basename($file)."\n" .
+        "Content-Disposition: attachment;\n" . " filename=\"".basename($file)."\"; size=".filesize($file).";\n" . 
+        "Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
+    }
+}
+$message .= "--{$mime_boundary}--";
+$returnpath = "-f" . $from;
+
+//Enviar EMail
+$mail = @mail($to, $subject, $message, $headers, $returnpath); 
+
+//Estado de envío de correo electrónico
+echo $mail?"<h1>Correo enviado.</h1>":"<h1>El envío de correo falló.</h1>";
