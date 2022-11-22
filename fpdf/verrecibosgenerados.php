@@ -109,7 +109,7 @@
 
 </div>
 <br>
-<?php   include("../redessociales.php") ?>
+<?php   include("../footer.php") ?>
 
 </body>
 </html>

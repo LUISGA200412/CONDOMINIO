@@ -1,6 +1,6 @@
 <?php	
 	
-	$mysqli= new mysqli("localhost", "root", "", "sayecito");
+	$mysqli= new mysqli("localhost", "root", "", "pwcon");
 	if(mysqli_connect_errno()){
 		echo "Este sitio esta presentando problemas";
 	}
